@@ -93,8 +93,10 @@ def save_checkpoint(ckpt_dir, state, epoch, ema_model=None):
 def restore_checkpoint(ckpt_dir, state, device='cuda:0', ema_model=None):
     if not os.path.exists(ckpt_dir):
         os.makedirs(os.path.dirname(ckpt_dir), exist_ok=True)
-        logging.warning(f"No checkpoint found at {ckpt_dir}. "
-                        f"Returned the same state as input")
+        logging.warning(
+            f"No checkpoint found at {ckpt_dir}. "
+            "Returned the same state as input"
+        )
         return state
     else:
         loaded_state = torch.load(ckpt_dir, map_location=device)
@@ -102,7 +104,7 @@ def restore_checkpoint(ckpt_dir, state, device='cuda:0', ema_model=None):
         state['model'].load_state_dict(loaded_state['model'], strict=False)
         if 'ema_model' in loaded_state and ema_model is not None:
             ema_model.load_state_dict(loaded_state['ema_model'])
-        logging.info(f'Successfully loaded previous state')
+        logging.info('Successfully loaded previous state')
         return state
 
 

@@ -4,7 +4,6 @@ import logging
 from functools import partial
 import math
 import numpy as np
-from scipy import special as ss
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -42,7 +41,6 @@ except:
     has_cauchy_extension = False
 
 try: # Try pykeops
-    import pykeops
     from pykeops.torch import Genred
     has_pykeops = True
     log.info("Pykeops installation found.")
@@ -151,7 +149,7 @@ except ImportError:
         "Falling back on slow Vandermonde kernel. Install pykeops for improved memory efficiency."
     )
     def log_vandermonde(v, x, L):
-        """
+        r"""
         v: (..., N)
         x: (..., N)
         returns: (..., L) \sum v x^l
@@ -1236,7 +1234,7 @@ class SSKernel(nn.Module):
         measure_args={},
         **kernel_args,
     ):
-        """State Space Kernel which computes the convolution kernel $\\bar{K}$
+        r"""State Space Kernel which computes the convolution kernel $\\bar{K}$
 
         H: Number of independent SSM copies; controls the size of the model. Also called d_model in the config.
         N: State size (dimensionality of parameters A, B, C). Also called d_state in the config. Generally shouldn't need to be adjusted and doens't affect speed much.
