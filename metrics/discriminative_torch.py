@@ -1,9 +1,7 @@
 import torch
 import numpy as np
 import torch.nn as nn
-import torchaudio
 from sklearn.metrics import accuracy_score
-from utils.utils import train_test_divide, batch_generator
 
 
 def discriminative_score_metrics(ori_data, generated_data, args):

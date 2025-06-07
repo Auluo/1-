@@ -1,8 +1,5 @@
-import os
-
 from .base_logger import BaseLogger
-from typing import Dict, Any, List, Optional
-from pprint import pprint
+from typing import Dict, Any, List
 import numpy as np
 
 

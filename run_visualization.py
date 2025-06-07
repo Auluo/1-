@@ -1,5 +1,4 @@
 import numpy as np
-import os, sys
 import torch
 from utils.loggers import CompositeLogger, NeptuneLogger, PrintLogger
 from utils.utils_args import parse_args_uncond
@@ -9,7 +8,6 @@ import logging
 from utils.utils_data import gen_dataloader
 from utils.utils import create_model_name_and_dir, restore_state, log_config_and_tags
 from utils.utils_vis import prepare_data, PCA_plot, TSNE_plot, density_plot, jensen_shannon_divergence
-import matplotlib
 from tqdm import tqdm
 
 # sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
